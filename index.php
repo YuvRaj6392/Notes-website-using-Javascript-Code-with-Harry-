@@ -25,14 +25,14 @@
     <button class="btn btn-primary" id="addbtn">Add Notes</a>
   </div>
 </div>
-<div id="notes" class="row container-fluid">
-<h1 align=center>Your Notes</h1>
+<h1 class="my-2">Notes</h1>
 <hr>
+<div id="notes" class="row container-fluid">
 <div class="card my-2 mx-2" style="width: 18rem;">
  <div class="card-body">
     <h5 class="card-title">Note</h5>
     <p class="card-text"></p>
-    <button  class="btn btn-primary" id=delete>Delete</button>
+    <button  class="btn btn-primary" id="delete">Delete</button>
   </div>
 </div>
 </div>
@@ -45,7 +45,6 @@
 <script>
 $(document).ready(function(){
 $("#addbtn").click(function(){
-let addtxt=document.getElementById("addtxt");
 let notes=localStorage.getItem("notes");
 if(notes==null)
 {
@@ -66,27 +65,27 @@ function shownotes()
 let notes=localStorage.getItem("notes");
 if(notes==null)
 {
-notesobj=[];
+notesbj=[];
 }
 else
 {
 notesobj=JSON.parse(notes);
 }
 let html="";
-notesobj.forEach(function(element,index){
-html+=`
-<div class="card my-2 mx-2" style="width: 18rem;">
+for(var i=0;i<notesobj.length;i++)
+{
+html+=`<div class="card my-2 mx-2" style="width: 18rem;">
  <div class="card-body">
-    <h5 class="card-title">Note ${index+1}</h5>
-    <p class="card-text">${element}</p>
-    <button  class="btn btn-primary" id=delete>Delete</button>
+    <h5 class="card-title">Note ${i+1}</h5>
+    <p class="card-text">${notesobj[i]}</p>
+    <button  class="btn btn-primary" id="delete">Delete</button>
   </div>
 </div>`;
-});
-let noteselem=document.getElementById("notes");
-if(noteselem.length!=0)
+}
+let ne=document.getElementById("notes");
+if(notes.length!=0)
 {
-noteselem.innerHTMl=html;
+ne.innerHTML=html;
 }
 }
 </script>
