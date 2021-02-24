@@ -10,8 +10,8 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">iNotes</a>
  <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onClick="sea()" id="s">
+        <button class="btn btn-outline-success" onClick="sea()" type="submit" >Search</button>
       </form>
     </div>
 </nav>
@@ -68,10 +68,10 @@ notesobj=JSON.parse(notes);
 let html="";
 for(var i=0;i<notesobj.length;i++)
 {
-html+=`<div class="card my-2 mx-2" style="width: 18rem;">
+html+=`<div id="card" class="card my-2 mx-2" style="width: 18rem;">
  <div class="card-body">
     <h5 class="card-title">Note ${i+1}</h5>
-    <p class="card-text">${notesobj[i]}</p>
+    <p class="card-text" id="para">${notesobj[i]}</p>
     <button  class="btn btn-primary" id="${i}" onClick="del(this.id)" id="del">Delete</button>
   </div>
 </div>`;
@@ -100,6 +100,25 @@ notesobj=JSON.parse(notes);
 notesobj.splice(i,1);
 localStorage.setItem("notes",JSON.stringify(notesobj));
 shownotes();
+}
+function sea()
+{
+$("#s").keyup(function(){
+let s=document.getElementById("s");
+let innervalue=s.value;
+let notecards=document.getElementsByClassName("card");
+Array.from(notecards).forEach(function(element){
+let cardtxt=element.getElementsByTagName("p")[0].innerText;
+alert(cardtxt);
+if(cardtxt.includes(innervalue))
+{
+t.style.display="hidden";
+}
+{
+t.style.display="hidden";
+}
+}
+});
 }
 </script>
 </html>
