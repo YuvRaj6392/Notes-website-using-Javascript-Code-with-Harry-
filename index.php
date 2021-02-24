@@ -28,13 +28,6 @@
 <h1 class="my-2">Notes</h1>
 <hr>
 <div id="notes" class="row container-fluid">
-<div class="card my-2 mx-2" style="width: 18rem;">
- <div class="card-body">
-    <h5 class="card-title">Note</h5>
-    <p class="card-text"></p>
-    <button  class="btn btn-primary" id="delete">Delete</button>
-  </div>
-</div>
 </div>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
@@ -45,6 +38,7 @@
 <script>
 $(document).ready(function(){
 $("#addbtn").click(function(){
+let addtxt=document.getElementById("addtxt");
 let notes=localStorage.getItem("notes");
 if(notes==null)
 {
@@ -60,12 +54,11 @@ addtxt.value="";
 shownotes();
 });
 });
-function shownotes()
-{
+function shownotes(){
 let notes=localStorage.getItem("notes");
 if(notes==null)
 {
-notesbj=[];
+notesobj=[];
 }
 else
 {
@@ -82,10 +75,10 @@ html+=`<div class="card my-2 mx-2" style="width: 18rem;">
   </div>
 </div>`;
 }
-let ne=document.getElementById("notes");
+let no=document.getElementById("notes");
 if(notes.length!=0)
 {
-ne.innerHTML=html;
+no.innerHTML=html;
 }
 }
 </script>
