@@ -71,7 +71,7 @@ html+=`<div class="card my-2 mx-2" style="width: 18rem;">
  <div class="card-body">
     <h5 class="card-title">Note ${i+1}</h5>
     <p class="card-text">${notesobj[i]}</p>
-    <button  class="btn btn-primary" id="delete">Delete</button>
+    <button  class="btn btn-primary" id="${i}" onClick="del(this.id)" id="del">Delete</button>
   </div>
 </div>`;
 }
@@ -80,6 +80,25 @@ if(notes.length!=0)
 {
 no.innerHTML=html;
 }
+else
+{
+no.innerHTML=`"Nothing to show!"`;
+}
+}
+function del(i)
+{
+let notes=localStorage.getItem("notes");
+if(notes==null)
+{
+notesobj=[];
+}
+else
+{
+notesobj=JSON.parse(notes);
+}
+notesobj.splice(i,1);
+localStorage.setItem("notes",JSON.stringify(notesobj));
+shownotes();
 }
 </script>
 </html>
