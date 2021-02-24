@@ -101,24 +101,5 @@ notesobj.splice(i,1);
 localStorage.setItem("notes",JSON.stringify(notesobj));
 shownotes();
 }
-function sea()
-{
-$("#s").keyup(function(){
-let s=document.getElementById("s");
-let innervalue=s.value;
-let notecards=document.getElementsByClassName("card");
-Array.from(notecards).forEach(function(element){
-let cardtxt=element.getElementsByTagName("p")[0].innerText;
-alert(cardtxt);
-if(cardtxt.includes(innervalue))
-{
-t.style.display="hidden";
-}
-{
-t.style.display="hidden";
-}
-}
-});
-}
 </script>
 </html>
